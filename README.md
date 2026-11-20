@@ -7,4 +7,5 @@ Submitted by:
 - Michael Angelo De Vergara (backend)
 
 BSIT III - Python
+
 November 20, 2026
