@@ -19,9 +19,9 @@ if(!uri)
 mongoose.connect(uri, {serverSelectionTimeoutMS: 5000}).then(() =>
 {
     console.log('Server connected to MongoDB')
-}).catch(() =>
+}).catch((err) =>
 {
-    console.log('Server failed to connect to MongoDB')
+    console.log(err.message)
     process.exit()
 })
 
