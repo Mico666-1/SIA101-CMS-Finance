@@ -2,12 +2,14 @@ import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../App.css'
 
+const url = import.meta.env.VITE_API_URL
+
 function Home()
 {
     const navigate = useNavigate()
     const createNewEntry = () => {navigate('/new')}
     const go2StudentBalanceManager = (i) => {navigate('/student-balance-manager', {state: {record: i}})}
-    const [entries, setEntries] = useState([]); useEffect(() => {fetch('http://localhost:5000/api/balance/read').then((res) => res.json()).then(setEntries).catch(console.error)}, [])
+    const [entries, setEntries] = useState([]); useEffect(() => {fetch(`${url}/api/balance/read`).then((res) => res.json()).then(setEntries).catch(console.error)}, [])
     return(
         <>
             <h1>College Management System - Finance</h1>

@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import {useNavigate, useLocation} from 'react-router-dom'
 
+const url = import.meta.env.VITE_API_URL
+
 function StudentBalanceManagerPay()
 {
     const navigate = useNavigate()
@@ -9,7 +11,7 @@ function StudentBalanceManagerPay()
     const x = location.state?.record[1]
     const [paid, setPaid] = useState('')
     const go2StudentBalanceManager = (i) => {navigate('/student-balance-manager', {state: {record: i}})}
-    const [entries, setEntries] = useState([]); useEffect(() => {fetch('http://localhost:5000/api/balance/read').then((res) => res.json()).then(setEntries).catch(console.error)}, [])
+    const [entries, setEntries] = useState([]); useEffect(() => {fetch(`${url}/api/balance/read`).then((res) => res.json()).then(setEntries).catch(console.error)}, [])
     const id = entries[i]?._id
     const handleSubmit = async (event) =>
     {
@@ -17,7 +19,7 @@ function StudentBalanceManagerPay()
         if(!id) return
         try
         {
-            await fetch('http://localhost:5000/api/finance/course/pay',
+            await fetch(`${url}/api/finance/course/pay`,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},

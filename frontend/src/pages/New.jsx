@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
+const url = import.meta.env.VITE_API_URL
+
 function New()
 {
     const navigate = useNavigate()
@@ -12,7 +14,7 @@ function New()
         event.preventDefault()
         try
         {
-            await fetch('http://localhost:5000/api/finance/new-balance',
+            await fetch(`${url}/api/finance/new-balance`,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},

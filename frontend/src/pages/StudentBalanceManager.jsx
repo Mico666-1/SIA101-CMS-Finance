@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import {useNavigate, useLocation} from 'react-router-dom'
 import '../App.css'
 
+const url = import.meta.env.VITE_API_URL
+
 function StudentBalanceManager()
 {
     const navigate = useNavigate()
@@ -10,7 +12,7 @@ function StudentBalanceManager()
     const goHome = () => {navigate('/')}
     const go2Pay = (x) => {navigate('/student-balance-manager/pay', {state: {record: [i, x]}})}
     const go2NewCourse = (i) => {navigate('/student-balance-manager/new-course', {state: {record: i}})}
-    const [entries, setEntries] = useState([]); useEffect(() => {fetch('http://localhost:5000/api/balance/read').then((res) => res.json()).then(setEntries).catch(console.error)}, [])
+    const [entries, setEntries] = useState([]); useEffect(() => {fetch(`${url}/api/balance/read`).then((res) => res.json()).then(setEntries).catch(console.error)}, [])
     const entry = entries[i]
     if(!entry){return <><p>Information to be shown here doesn't exist.</p><div><button onClick={() => goHome()}>Close</button></div></>}
     return(
