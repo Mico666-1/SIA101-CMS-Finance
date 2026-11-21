@@ -4,6 +4,7 @@ Submitted by:
 
 - Joshua Pruta (Documentation)
 - Joshua Tambor (frontend)
+- Lloyd Marc S. Señora (frontend)
 - Michael Angelo De Vergara (backend)
 
 BSIT III - Python
